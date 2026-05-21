@@ -1,68 +1,68 @@
 # Kami
+## ReadMe中文翻译
 
 <img src="public/icon.png" width="200">
 
-Kami is a paper-folding simulation built to be driven by a physical hinge, using folding device APIs when available.
+Kami 是一款折纸模拟游戏，旨在通过物理铰链（折叠屏）进行驱动，并在支持时使用折叠设备 API。
 
-Try it online at https://maxwase.github.io/kami
+在线体验：[https://maxwase.github.io/kami](https://maxwase.github.io/kami)
 
-!**important** [Posture API](https://developer.mozilla.org/en-US/docs/Web/API/Device_Posture_API) only works in a limited set of browsers! Check out the compatibility [here](https://developer.mozilla.org/en-US/docs/Web/API/Device_Posture_API#browser_compatibility).
+!**重要提示** [Posture API (姿态 API)](https://developer.mozilla.org/en-US/docs/Web/API/Device_Posture_API) 仅在部分浏览器中有效！请在[此处](https://developer.mozilla.org/en-US/docs/Web/API/Device_Posture_API#browser_compatibility)查看浏览器兼容性。
 
-## See it in action
+## 效果演示
 
-https://github.com/user-attachments/assets/56427f60-d67c-44de-a087-7d626d0598f2
+[https://github.com/user-attachments/assets/56427f60-d67c-44de-a087-7d626d0598f2](https://github.com/user-attachments/assets/56427f60-d67c-44de-a087-7d626d0598f2)
 
-# Options
+# 游戏选项
 
-The game tries its best to auto-detect your device's folding posture and capabilities, but you can also manually set them using the "Show Options" button in the top-left.
+游戏会尽最大努力自动检测您设备的折叠姿态和功能，但您也可以通过左上角的“Show Options（显示选项）”按钮进行手动设置。
 
-1. Invert fold direction -- By default, Kami assumes the accelerometer is on the right half of the screen. It tries to detect the direction you fold your device (left to right, top to bottom, etc). If it guesses wrong, set it manually here.
-2. Stability threshold -- This setting controls how sensitive posture detection is to small movements. A lower value means even small tilts count as a fold, while a higher value requires faster folds.
-3. X and Y axis -- The problem of the century persists: Where is the center of the device?
+1. **反转折叠方向 (Invert fold direction)** —— 默认情况下，Kami 假设加速度计位于屏幕的右半部分。它会尝试检测您折叠设备的方向（从左到右、从上到下等）。如果检测错误，请在此处手动设置。
+2. **稳定性阈值 (Stability threshold)** —— 此设置控制姿态检测对微小动作的敏感度。较低的值意味着即使是轻微的倾斜也会被计为折叠，而较高的值则需要更快的折叠动作。
+3. **X 轴和 Y 轴 (X and Y axis)** —— 世纪难题依然存在：设备的中心究竟在哪里？
 
-## Installation
+## 安装方法
 
-1. Download the latest version for your Mac from the [releases](https://github.com/maxwase/kami/releases) page.
-2. Unzip it
-3. Install like any other dng, drag the app into application
-4. Run `xattr -dr com.apple.quarantine /Applications/kami-tauri.app`. This is needed because I don't have an Apple account to sign the binary with.
-   If you don't trust the GitHub actions output, consider building the app [yourself](#Native)
+1. 从 [Releases (发布)](https://github.com/maxwase/kami/releases) 页面下载适用于 Mac 的最新版本。
+2. 解压文件。
+3. 像安装其他 dmg 一样进行安装，将应用拖入“应用程序 (Applications)”文件夹。
+4. 运行命令：`xattr -dr com.apple.quarantine /Applications/kami-tauri.app`。这一步是必需的，因为我没有用于对二进制文件进行签名的 Apple 开发者账号。
+   如果您不信任 GitHub Actions 的构建输出，可以考虑[自行编译](#原生应用-native)该应用。
 
-## Requirements
+## 环境要求
 
 - Node.js 18+ (Vite 7)
 - pnpm 9+
-- A modern [browser](https://developer.mozilla.org/en-US/docs/Web/API/Device_Posture_API) to actually test folding. Note that the API is only available on localhost or HTTPS connections.
-- Or [stable Rust](https://rustup.sh) when building with `tauri` for MacOS.
+- 运行测试折叠功能需要一款现代[浏览器](https://developer.mozilla.org/en-US/docs/Web/API/Device_Posture_API)。请注意，该 API 仅在 localhost 或 HTTPS 连接下可用。
+- 如果使用 `tauri` 为 MacOS 编译，则需要 [稳定版 Rust](https://rustup.sh)。
 
-## Build and run
+## 构建与运行
 
-### Web
-
-```sh
-pnpm install
-pnpm run dev    # start Vite dev server
-pnpm run build  # type-check + production build to dist/
-```
-
-### Native
-
-To run it on MacOS do the following
+### 网页端 (Web)
 
 ```sh
 pnpm install
-pnpm run tauri dev    # start Vite dev server
-pnpm tauri build --bundles app    # build an app
+pnpm run dev    # 启动 Vite 开发服务器
+pnpm run build  # 类型检查 + 生产环境打包至 dist/
 ```
 
+### 原生应用 (Native)
 
-# Credits
+在 MacOS 上运行，请执行以下命令：
 
-- [Foldy bird](https://lyra.horse/fun/foldy-bird) -- Flappy bird controlled with hinge flaps! It's surprising how 2 people can independently come up with the same idea! Lyra, however, published it first, so congrats!
-- [LidAngleSensor](https://github.com/samhenrigold/LidAngleSensor) -- An amazing reversed-engineering of the MacBook's lid angle sensor, which inspired me to experiment with foldables!
+```sh
+pnpm install
+pnpm run tauri dev    # 启动 Vite 开发服务器
+pnpm tauri build --bundles app    # 构建应用安装包
+```
 
-# Future of the project
+# 致谢
 
-I'm primarily a backend developer, so the code quality here is probably not the best; a lot of it was AI-generated over a weekend.
-I want to rewrite this in Rust, WebAssembly to make it cross-platform and to add more complex folding puzzles.
-If you have any thoughts or suggestions, please contact me via [telegram](https://t.me/maxwase) or [email](mailto:max.vvase@gmail.com) :)
+- [Foldy bird](https://lyra.horse/fun/foldy-bird) —— 用屏幕折叠（铰链翻动）来控制的像素鸟 (Flappy Bird)！令人惊讶的是，两个人竟然能独立想到同一个点子！不过 Lyra 先发布了它，恭喜！
+- [LidAngleSensor](https://github.com/samhenrigold/LidAngleSensor) —— 对 MacBook 开合角度传感器非常厉害的反向工程，正是它启发了我去尝试折叠屏设备！
+
+# 项目未来
+
+我主要是一名后端开发人员，所以这里的代码质量可能不是最好的，其中很多代码都是在某天周末由 AI 生成的。
+我想用 Rust 和 WebAssembly 重写这个项目，使其具有跨平台能力，并加入更复杂的折叠谜题。
+如果您有任何想法或建议，欢迎通过 [Telegram](https://t.me/maxwase) 或 [电子邮箱](mailto:max.vvase@gmail.com) 与我联系 :)
