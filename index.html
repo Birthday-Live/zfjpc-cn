@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Interactive origami folding demo that responds to device posture."
+      content="响应设备姿态的互动折纸模拟演示。"
     />
     <meta name="theme-color" content="#201a14" />
     <title>kami</title>
@@ -18,16 +18,16 @@
 
     <div id="hud">
       <div class="row">
-        <button id="resetActive" type="button">Reset</button>
-        <button id="undo" type="button" disabled>Undo</button>
-        <button id="foldFallback" type="button">Fold</button>
+        <button id="resetActive" type="button">重置</button>
+        <button id="undo" type="button" disabled>撤销</button>
+        <button id="foldFallback" type="button">折叠</button>
         <button
           id="toggleHelp"
           type="button"
           aria-controls="helpBlock"
           aria-pressed="false"
         >
-          Show Options
+          显示选项
         </button>
         <a
           id="buyCoffee"
@@ -37,7 +37,7 @@
         >
           <img
             src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-            alt="Buy Me A Coffee"
+            alt="请我喝杯咖啡"
             style="height: 32px; width: auto"
           />
         </a>
@@ -46,9 +46,9 @@
       <div class="help" id="helpBlock" style="display: none">
         <div id="foldHelp"></div>
         <div id="gestureHelp"></div>
-        <div class="row" aria-label="Motion options">
+        <div class="row" aria-label="动作选项">
           <div class="input-row mono">
-            <span>Stability threshold:</span>
+            <span>稳定性阈值：</span>
             <span id="stableAccelValue">0.35 m/s²</span>
             <input
               id="stableAccel"
@@ -61,14 +61,14 @@
           </div>
           <div class="input-row mono">
             <label
-              title="Reverse which side the fold prefers to move toward when triggered"
+              title="反转触发折叠时优先移动的方向（哪一侧向哪一侧折叠）"
             >
-              Invert fold direction
+              反转折叠方向
               <input id="invertFoldDirection" type="checkbox" />
             </label>
           </div>
-          <div class="input-row mono" aria-label="Hinge controls">
-            <span>X:</span>
+          <div class="input-row mono" aria-label="铰链控制">
+            <span>X 轴：</span>
             <input
               id="manualHingeX"
               type="range"
@@ -77,7 +77,7 @@
               step="1"
               value="50"
             />
-            <span>Y:</span>
+            <span>Y 轴：</span>
             <input
               id="manualHingeY"
               type="range"
@@ -89,7 +89,7 @@
           </div>
           <div class="input-row mono">
             <label>
-              Flip hinge
+              翻转铰链
               <input id="manualHingeFlip" type="checkbox" />
             </label>
           </div>
@@ -104,7 +104,7 @@
             target="_blank"
             rel="noreferrer"
           >
-            GitHub source
+            GitHub 源码
           </a>
         </div>
       </div>
